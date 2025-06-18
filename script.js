@@ -4,24 +4,34 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskList = document.getElementById('task-list');
 
     function addTask() {
-        var taskText = taskInput.value.trim();
+    var taskText = taskInput.value.trim();
 
-        if (taskText.length === 0) {
-            alert('Enter a task!');
-        } else {
-            const listItem = document.createElement('li')
-            listItem.textContent = taskText;
-            const removeButton = document.createElement('button')
-            removeButton.textContent = 'Remove';
-            removeButton.className = 'remove-btn'
-            removeButton.addEventListener('click', function () {
-                listItem.pop();
-            })
-            listItem.appendChild(removeButton);
-            taskList.appendChild(listItem);
-            taskInput.value = '';
-        }
+    if (taskText.length === 0) {
+        alert('Enter a task!');
+    } else {
+        const classList = document.createElement('li');
+        classList.classList.add('task-item');
+
+        // Create a new button for removing the task
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.className = 'remove-btn';
+
+        // Assign an onclick event to the remove button
+        removeButton.onclick = function () {
+            taskList.removeChild(classList);
+        };
+
+        // Append the remove button to the <li>
+        classList.appendChild(removeButton);
+
+        // Append the <li> to the taskList
+        taskList.appendChild(classList);
+
+        // Clear the task input field
+        taskInput.value = '';
     }
+}
 
     // Add an event listener to addButton
     addButton.addEventListener('click', function () {
