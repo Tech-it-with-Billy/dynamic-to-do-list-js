@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             listItem.textContent = taskText;
             const removeButton = document.createElement('button')
             removeButton.textContent = 'Remove';
-            removeButton.className = 'remove-button'
+            removeButton.className = 'remove-btn'
             removeButton.addEventListener('click', function () {
                 listItem.pop();
             })
